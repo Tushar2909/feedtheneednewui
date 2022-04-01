@@ -128,45 +128,60 @@ class _LoginPageState extends State<LoginPage> {
                           hintText: "Enter Phone number",
                           labelText: "Number",
                         ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return ("Please Enter Your number");
-                          } else if (value.length < 10 || value.length > 10) {
-                            return ("Phone Number Length Should be 10 Digit");
-                          }
-                          return null;
-                        },
+                        // validator: (value) {
+                        //   if (value!.isEmpty) {
+                        //     return ("Please Enter Your number");
+                        //   } else if (value.length < 10 || value.length > 10) {
+                        //     return ("Phone Number Length Should be 10 Digit");
+                        //   }
+                        //   return null;
+                        // },
                       ),
                     ),
                     SizedBox(
                       height: 30,
                     ),
-                    TextButton(
-                      style: ButtonStyle(
-                        foregroundColor:
-                            MaterialStateProperty.all<Color>(Colors.blue),
-                      ),
-                      onPressed: () async {
-                        var token = await magic.auth
-                            .loginWithSMS(phoneNumber: textController.text);
-                        debugPrint('token, $token');
+                    // TextButton(
+                    //   style: ButtonStyle(
+                    //     foregroundColor:
+                    //         MaterialStateProperty.all<Color>(Colors.blue),
+                    //   ),
+                    //   onPressed: () async {
+                    //     var token = await magic.auth
+                    //         .loginWithSMS(phoneNumber: textController.text);
+                    //     debugPrint('token, $token');
 
-                        if (token.isNotEmpty) {
-                          /// Navigate to your home page
-                        //  onPressed: () {
-                        //   Navigator.pushNamed(context, MyRoutes.HomeRoute);
-                        // };
-                        }
-                      },
-                      child: const Text('Login With Phone Number'),
-                    ),
+                    //     if (token.isNotEmpty) {
+                    //       // Navigate to your home page
+                    //       //  onPressed: () {
+                    //       //   Navigator.pushNamed(context, MyRoutes.HomeRoute);
+
+                    //       // };
+                    //       moveToHome(context);
+                    //     }
+                    //   },
+                    //   child: const Text('Login With Phone Number'),
+                    // ),
 
                     Material(
                       color: Colors.blue,
                       borderRadius:
                           BorderRadius.circular(changeButton ? 50 : 8),
                       child: InkWell(
-                        onTap: () => moveToHome(context),
+                        onTap: () async {
+                          var token = await magic.auth
+                              .loginWithSMS(phoneNumber: textController.text);
+                          debugPrint('token, $token');
+
+                          if (token.isNotEmpty) {
+                            // Navigate to your home page
+                            //  onPressed: () {
+                            //   Navigator.pushNamed(context, MyRoutes.HomeRoute);
+
+                            // };
+                            moveToHome(context);
+                          }
+                        },
                         child: AnimatedContainer(
                           duration: Duration(milliseconds: 180),
                           width: changeButton ? 50 : 150,
