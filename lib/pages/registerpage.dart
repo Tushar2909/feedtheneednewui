@@ -46,7 +46,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   "Sign Up",
                   style: TextStyle(
                     fontSize: 35,
-                    color: Colors.blue,
+                    color: Colors.deepPurpleAccent,
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.bold,
                   ),
@@ -59,7 +59,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   "Feed The Need Welcomes You",
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.blue,
+                    color: Colors.deepPurpleAccent,
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.bold,
                   ),
@@ -89,97 +89,78 @@ class _RegisterPageState extends State<RegisterPage> {
                             setState(() {});
                           }),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
-                      child: TextFormField(
-                        obscureText: _isObscure,
-                        controller: password,
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          icon: Icon(Icons.lock),
-                          hintText: "Enter Password",
-                          labelText: "Password",
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              _isObscure
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                _isObscure = !_isObscure;
-                              });
-                            },
-                          ),
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return ("Please Enter Password");
-                          } else if (value.length < 8) {
-                            return ("Number length should be at east 10!");
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
-                      child: TextFormField(
-                        obscureText: _isObscure,
-                        controller: confirmpassword,
-                        // obscureText: true,
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          icon: Icon(Icons.lock),
-                          hintText: "Enter Confirmed Password",
-                          labelText: "Confirmed Password",
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              _isObscure
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                _isObscure = !_isObscure;
-                              });
-                            },
-                          ),
-                        ),
+                    // Padding(
+                    //   padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
+                    //   child: TextFormField(
+                    //     obscureText: _isObscure,
+                    //     controller: password,
+                    //     keyboardType: TextInputType.text,
+                    //     decoration: InputDecoration(
+                    //       icon: Icon(Icons.lock),
+                    //       hintText: "Enter Email",
+                    //       labelText: "Email",
+                          // suffixIcon: IconButton(
+                          //   icon: Icon(
+                          //     _isObscure
+                          //         ? Icons.visibility
+                          //         : Icons.visibility_off,
+                          //   ),
+                          //   onPressed: () {
+                          //     setState(() {
+                          //       _isObscure = !_isObscure;
+                          //     });
+                          //   },
+                          // ),
+                    //     ),
+                    //     validator: (value) {
+                    //       if (value!.isEmpty) {
+                    //         return ("Please Enter Email");
+                    //       } else if (value.length < 8) {
+                    //         return ("Number length should be at east 10!");
+                    //       }
+                    //       return null;
+                    //     },
+                    //   ),
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
+                    //   child: TextFormField(
+                    //     obscureText: _isObscure,
+                    //     controller: confirmpassword,
+                    //     // obscureText: true,
+                    //     keyboardType: TextInputType.text,
+                    //     decoration: InputDecoration(
+                    //       icon: Icon(Icons.lock),
+                    //       hintText: "Enter Confirmed Password",
+                    //       labelText: "Confirmed Password",
+                    //       suffixIcon: IconButton(
+                    //         icon: Icon(
+                    //           _isObscure
+                    //               ? Icons.visibility
+                    //               : Icons.visibility_off,
+                    //         ),
+                    //         onPressed: () {
+                    //           setState(() {
+                    //             _isObscure = !_isObscure;
+                    //           });
+                    //         },
+                    //       ),
+                    //     ),
 
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please re-enter password';
-                          }
-                          print(password.text);
-                          print(confirmpassword.text);
-                          if (password.text != confirmpassword.text) {
-                            return "Re-enter Password does not match";
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          icon: Icon(Icons.local_phone),
-                          hintText: "Enter Phone Number",
-                          labelText: "Phone Number",
-                        ),
-                        keyboardType: TextInputType.number,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return ("Phone number cannot be empty!");
-                          } else if (value.length < 10) {
-                            return ("Number length should be at east 10!");
-                          }
-
-                          return null;
-                        },
-                      ),
-                    ),
+                    //     validator: (value) {
+                    //       if (value!.isEmpty) {
+                    //         return 'Please re-enter password';
+                    //       }
+                    //       print(password.text);
+                    //       print(confirmpassword.text);
+                    //       if (password.text != confirmpassword.text) {
+                    //         return "Re-enter Password does not match";
+                    //       }
+                    //       return null;
+                    //     },
+                    //   ),
+                    // ),
+                    
                     Padding(
                       padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
                       child: TextFormField(
@@ -204,11 +185,32 @@ class _RegisterPageState extends State<RegisterPage> {
                         },
                       ),
                     ),
+
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          icon: Icon(Icons.local_phone),
+                          hintText: "Enter Phone Number",
+                          labelText: "Phone Number",
+                        ),
+                        keyboardType: TextInputType.number,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return ("Phone number cannot be empty!");
+                          } else if (value.length < 10) {
+                            return ("Number length should be at east 10!");
+                          }
+
+                          return null;
+                        },
+                      ),
+                    ),
                     SizedBox(
                       height: 30,
                     ),
                     Material(
-                      color: Colors.blue,
+                      color: Colors.deepPurpleAccent,
                       borderRadius:
                           BorderRadius.circular(changeButton ? 50 : 8),
                       child: InkWell(
@@ -256,7 +258,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 22,
-                                color: Colors.blue),
+                                color: Colors.deepPurpleAccent),
                           ),
                         )
                       ],

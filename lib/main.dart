@@ -69,7 +69,7 @@ import 'package:myapp/utils/routes.dart';
 
 void main() {
   runApp(MyApp());
-  Magic.instance=Magic("pk_live_0A55E626BD29898A");
+  Magic.instance=Magic("pk_live_F3A69882D37F8E12");
 }
 
 class MyApp extends StatelessWidget {
@@ -84,13 +84,10 @@ class MyApp extends StatelessWidget {
       title: 'Magic Demo',
 
         home: Stack(children: [
+        ButtomBar(),
 
-          const LoginPage(),
-
-          Magic.instance.relayer // <--- add it here
-
-        ]
-        ),
+        Magic.instance.relayer // <--- add it here
+      ]),
       // theme: ThemeMode.light,
       // theme:ThemeData
       // (
@@ -107,7 +104,8 @@ class MyApp extends StatelessWidget {
       //brightness:Brightness.dark,
       // )
       routes: {
-          //"/": (context) => Body(),
+
+        //"/": (context) => Body(),
         //"/": (context) => LoginPage(),
         //"/": (context) => RegisterPage(),
         //"/": (context) => LoginPage(),
@@ -121,7 +119,11 @@ class MyApp extends StatelessWidget {
         MyRoutes.MapsRoute: (context) => Maps(),
          MyRoutes.BodyRoute: (context) => Body(),
          MyRoutes.MapsRoute: (context) => Maps(),
+
       },
     );
   }
+}
+
+BottomBar() {
 }

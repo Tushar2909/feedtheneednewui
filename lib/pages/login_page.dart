@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             children: [
               Image.asset(
-                "assets/image/login_1image.jpg",
+                "assets/image/login_new.jpg",
                 fit: BoxFit.cover,
               ),
               SizedBox(
@@ -54,6 +54,7 @@ class _LoginPageState extends State<LoginPage> {
               Text(
                 "Welcome $name",
                 style: TextStyle(
+                  color: Colors.deepPurpleAccent,
                   fontSize: 25,
                   fontStyle: FontStyle.normal,
                   fontWeight: FontWeight.bold,
@@ -125,6 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           icon: Icon(Icons.phone),
+                          
                           hintText: "Enter Phone number",
                           labelText: "Number",
                         ),
@@ -164,7 +166,7 @@ class _LoginPageState extends State<LoginPage> {
                     // ),
 
                     Material(
-                      color: Colors.blue,
+                      color: Colors.deepPurpleAccent,
                       borderRadius:
                           BorderRadius.circular(changeButton ? 50 : 8),
                       child: InkWell(
@@ -251,7 +253,7 @@ class _LoginPageState extends State<LoginPage> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 20,
-                                  color: Colors.blue),
+                                  color: Colors.deepPurpleAccent),
                               //  textAlign: TextAlign.left,
                             ),
                           )
