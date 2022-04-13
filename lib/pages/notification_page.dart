@@ -11,6 +11,7 @@ class _NotificationPage extends State<NotificationPage> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.deepPurple,
+          centerTitle: true,
           title: Text('Notifications'),
         ),
         body:

@@ -47,7 +47,7 @@
 //             BottomNavigationBarItem(
 //               icon: Icon(Icons.notifications),
 //               label: 'Notification',
-              
+
 //             ),
 //             BottomNavigationBarItem(
 //               icon: Icon(Icons.logout_sharp),
@@ -58,9 +58,9 @@
 //       );
 // }
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/favourite_page.dart';
+import 'package:myapp/pages/Donate_page.dart';
 import 'package:myapp/pages/home_page.dart';
-import 'package:myapp/pages/logout_page.dart';
+
 import 'package:myapp/pages/notification_page.dart';
 import 'package:myapp/pages/profile/components/body.dart';
 import 'package:myapp/pages/profile/profile_page.dart';
@@ -74,8 +74,8 @@ class _ButtomBarState extends State<ButtomBar> {
   int currentIndex = 0;
   final Screens = [
     HomePage(),
-    FavouritePage(),
-    LogOutPage(),
+    DonatePage(),
+    NotificationPage(),
     Body(),
   ];
   @override
@@ -107,10 +107,9 @@ class _ButtomBarState extends State<ButtomBar> {
               icon: Icon(Icons.person),
               label: 'Profile',
               //onclick: () {
-                          //Navigator.pushNamed(context, MyRoutes.ForgotRoute);
-                       // }
+              //Navigator.pushNamed(context, MyRoutes.ForgotRoute);
+              // }
             ),
-            
           ],
         ),
       );

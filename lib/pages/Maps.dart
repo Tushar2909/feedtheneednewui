@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/current_location_screen.dart';
 
-import 'package:myapp/pages/home_screen.dart';
+// import 'package:myapp/pages/home_screen.dart';
 
 class Maps extends StatelessWidget {
   const Maps({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class Maps extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      home: const CurrentLocationScreen(),
     );
   }
 }

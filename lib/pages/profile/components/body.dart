@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/profile/components/profile_pic.dart';
-
 import 'package:myapp/pages/profile/components/profile_menu.dart';
+import '../../../utils/routes.dart';
 import 'profile_pic.dart';
 import 'profile_menu.dart';
 
@@ -17,17 +17,19 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "My Account",
             icon: "assets/icons/User Icon.svg",
-            press: () => {},
+            press: () =>
+                {Navigator.pushNamed(context, MyRoutes.MyAccountRoute)},
           ),
           ProfileMenu(
             text: "Notifications",
             icon: "assets/icons/Bell.svg",
-            press: () {},
+            press: () =>
+                {Navigator.pushNamed(context, MyRoutes.NotificationtRoute)},
           ),
           ProfileMenu(
             text: "Settings",
             icon: "assets/icons/Settings.svg",
-            press: () {},
+            press: () {Navigator.pushNamed(context, MyRoutes.SettingsRoute);},
           ),
           ProfileMenu(
             text: "Help Center",

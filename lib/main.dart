@@ -57,6 +57,8 @@ import 'package:myapp/pages/SenderPage.dart';
 import 'package:myapp/pages/buttom_bar.dart';
 import 'package:myapp/pages/Maps.dart';
 import 'package:myapp/pages/home_page.dart';
+import 'package:myapp/pages/myaccount.dart';
+import 'package:myapp/pages/notification_page.dart';
 import 'package:myapp/pages/profile/components/body.dart';
 import 'package:myapp/pages/login_page.dart';
 import 'package:magic_sdk/magic_sdk.dart';
@@ -65,7 +67,9 @@ import 'package:myapp/pages/profile/components/body.dart';
 import 'package:myapp/pages/profile/profile_page.dart';
 import 'package:myapp/pages/registerpage.dart';
 import 'package:myapp/pages/FogotPass.dart';
+import 'package:myapp/pages/settings.dart';
 import 'package:myapp/utils/routes.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -117,8 +121,11 @@ class MyApp extends StatelessWidget {
         MyRoutes.ButtomBarRoute: (context) => ButtomBar(),
         MyRoutes.SenderRoute: (context) => SenderPage(),
         MyRoutes.MapsRoute: (context) => Maps(),
-         MyRoutes.BodyRoute: (context) => Body(),
-         MyRoutes.MapsRoute: (context) => Maps(),
+        MyRoutes.BodyRoute: (context) => Body(),
+        MyRoutes.MapsRoute: (context) => Maps(),
+        MyRoutes.MyAccountRoute: (context) => MyAccount(),
+        MyRoutes.NotificationtRoute: (context) => NotificationPage(),
+        MyRoutes.SettingsRoute: (context) => SettingsPage(),
 
       },
     );

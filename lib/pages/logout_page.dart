@@ -11,6 +11,7 @@ class _LogOutPage extends State<LogOutPage> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.deepPurple,
+          centerTitle: true,
           title: Text('Log Out'),
         ),
         body: Center(child: Text('Log Out', style: TextStyle(fontSize: 60))),

@@ -8,6 +8,8 @@ class MyRoutes {
   static String MapsRoute = "/Maps";
   static String ProfileRoute = "Profile";
   static String BodyRoute = "/Body";
-  
+  static String MyAccountRoute = "/Account";
+  static String NotificationtRoute = "/Notification";
+  static String SettingsRoute = "/Setting";
   
 }

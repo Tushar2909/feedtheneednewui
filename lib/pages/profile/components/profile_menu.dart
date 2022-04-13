@@ -21,7 +21,7 @@ class ProfileMenu extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: TextButton(
         style: TextButton.styleFrom(
-          primary: kPrimaryColor,
+          primary: Colors.deepPurple,
           padding: EdgeInsets.all(20),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
@@ -32,8 +32,8 @@ class ProfileMenu extends StatelessWidget {
           children: [
             SvgPicture.asset(
               icon,
-              color: kPrimaryColor,
-              width: 22,
+              color: Color.fromARGB(255, 30, 11, 140),
+              width: 18,
             ),
             SizedBox(width: 20),
             Expanded(child: Text(text)),
