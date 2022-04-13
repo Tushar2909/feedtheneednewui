@@ -70,10 +70,9 @@ import 'package:myapp/pages/FogotPass.dart';
 import 'package:myapp/pages/settings.dart';
 import 'package:myapp/utils/routes.dart';
 
-
 void main() {
   runApp(MyApp());
-  Magic.instance=Magic("pk_live_F3A69882D37F8E12");
+  Magic.instance = Magic("pk_live_F3A69882D37F8E12");
 }
 
 class MyApp extends StatelessWidget {
@@ -82,13 +81,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      
-
       theme: ThemeData(fontFamily: 'Roboto'),
       title: 'Magic Demo',
 
-        home: Stack(children: [
-        ButtomBar(),
+      home: Stack(children: [
+        const LoginPage(),
 
         Magic.instance.relayer // <--- add it here
       ]),
@@ -108,7 +105,6 @@ class MyApp extends StatelessWidget {
       //brightness:Brightness.dark,
       // )
       routes: {
-
         //"/": (context) => Body(),
         //"/": (context) => LoginPage(),
         //"/": (context) => RegisterPage(),
@@ -126,11 +122,9 @@ class MyApp extends StatelessWidget {
         MyRoutes.MyAccountRoute: (context) => MyAccount(),
         MyRoutes.NotificationtRoute: (context) => NotificationPage(),
         MyRoutes.SettingsRoute: (context) => SettingsPage(),
-
       },
     );
   }
 }
 
-BottomBar() {
-}
+BottomBar() {}
