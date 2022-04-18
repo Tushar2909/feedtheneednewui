@@ -10,7 +10,7 @@ class _HomePage extends State<HomePage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          backgroundColor:  Colors.deepPurple,
+          backgroundColor:  Colors.deepPurpleAccent,
           centerTitle: true,
           title: Text('Home'),
         ),

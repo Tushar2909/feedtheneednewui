@@ -10,7 +10,7 @@ class _ProfilePage extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.deepPurple,
+          backgroundColor: Colors.deepPurpleAccent,
           title: Text('My Profile'),
         ),
 
