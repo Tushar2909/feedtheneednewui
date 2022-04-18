@@ -73,12 +73,32 @@ class _SenderPage extends State<SenderPage> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
                 child: TextFormField(
-                  minLines: 2,
+                  minLines: 1,
                   maxLines: 5,
                   keyboardType: TextInputType.multiline,
                   decoration: InputDecoration(
+                    icon: Icon(Icons.restaurant_menu_sharp),
                     hintText: "Enter Food Details",
                     labelText: "Enter Details",
+                  ),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return ("This field cannot be empty cannot be empty!");
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
+                child: TextFormField(
+                  minLines: 1,
+                  maxLines: 5,
+                  keyboardType: TextInputType.multiline,
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.delivery_dining_sharp),
+                    hintText: "Enter Food Pickup location",
+                    labelText: "Enter location",
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {

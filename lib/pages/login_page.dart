@@ -185,23 +185,28 @@ class _LoginPageState extends State<LoginPage> {
                           }
                         },
                         child: AnimatedContainer(
-                          duration: Duration(milliseconds: 180),
+                          duration: const Duration(milliseconds: 180),
                           width: changeButton ? 50 : 150,
                           height: 50,
                           alignment: Alignment.center,
                           child: changeButton
-                              ? Icon(
+                              ?const Icon(
                                   Icons.done,
                                   color: Colors.white,
                                 )
-                              : Text(
-                                  "LOGIN",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
+                              : InkWell(
+                                onTap: () {
+                                  
+                                },
+                                child: const Text(
+                                    "LOGIN",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
                                   ),
-                                ),
+                              ),
 
                           // decoration: BoxDecoration(
                           //  color: Colors.deepPurpleAccent,
@@ -211,7 +216,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
 
@@ -234,7 +239,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text(
+                          const Text(
                             "New Here? ",
                             textAlign: TextAlign.left,
                             style: TextStyle(
@@ -248,7 +253,7 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.pushNamed(
                                   context, MyRoutes.RegisterRoute);
                             },
-                            child: Text(
+                            child: const Text(
                               " Register Now",
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,

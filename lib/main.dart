@@ -81,50 +81,51 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: 'Roboto'),
-      title: 'Magic Demo',
+      home: Stack(
+        children: [
+          MaterialApp(
+            theme: ThemeData(fontFamily: 'Roboto'),
+            title: 'OTP',
 
-      home: Stack(children: [
-        const LoginPage(),
+            //  home: const LoginPage(),
+            // theme: ThemeMode.light,
+            // theme:ThemeData
+            // (
+            //primarySwatch: Colors.deepPurple,
+            //fontFamily: GoogleFonts.lato().fontFamily,
+            // ),
+            debugShowCheckedModeBanner: false,
+            // darkTheme: ThemeData(
+            //  brightness: Brightness.dark,
+            // ),
 
-        Magic.instance.relayer // <--- add it here
-      ]),
-      // theme: ThemeMode.light,
-      // theme:ThemeData
-      // (
-      //primarySwatch: Colors.deepPurple,
-      //fontFamily: GoogleFonts.lato().fontFamily,
-      // ),
-      debugShowCheckedModeBanner: false,
-      // darkTheme: ThemeData(
-      //  brightness: Brightness.dark,
-      // ),
-
-      // themeMode: ThemeMode.dark,
-      //darkTheme: ThemeData(
-      //brightness:Brightness.dark,
-      // )
-      routes: {
-        //"/": (context) => Body(),
-        //"/": (context) => LoginPage(),
-        //"/": (context) => RegisterPage(),
-        //"/": (context) => LoginPage(),
-        MyRoutes.loginRoute: (context) => LoginPage(),
-        MyRoutes.RegisterRoute: (context) => RegisterPage(),
-        MyRoutes.ForgotRoute: (context) => FogotPass(),
-        //MyRoutes.ProfileRoute: (context) => ProfileScreen(),
-        MyRoutes.HomeRoute: (context) => HomePage(),
-        MyRoutes.ButtomBarRoute: (context) => ButtomBar(),
-        MyRoutes.SenderRoute: (context) => SenderPage(),
-        MyRoutes.MapsRoute: (context) => Maps(),
-        MyRoutes.BodyRoute: (context) => Body(),
-        MyRoutes.MapsRoute: (context) => Maps(),
-        MyRoutes.MyAccountRoute: (context) => MyAccount(),
-        MyRoutes.NotificationtRoute: (context) => NotificationPage(),
-        MyRoutes.SettingsRoute: (context) => SettingsPage(),
-      },
+            // themeMode: ThemeMode.dark,
+            //darkTheme: ThemeData(
+            //brightness:Brightness.dark,
+            // )
+            routes: {
+              "/": (context) => ButtomBar(),
+              //"/": (context) => LoginPage(),
+              //"/": (context) => RegisterPage(),
+              //"/": (context) => LoginPage(),
+              MyRoutes.loginRoute: (context) => LoginPage(),
+              MyRoutes.RegisterRoute: (context) => RegisterPage(),
+              MyRoutes.ForgotRoute: (context) => FogotPass(),
+              //MyRoutes.ProfileRoute: (context) => ProfileScreen(),
+              MyRoutes.HomeRoute: (context) => HomePage(),
+              MyRoutes.ButtomBarRoute: (context) => ButtomBar(),
+              MyRoutes.SenderRoute: (context) => SenderPage(),
+              MyRoutes.MapsRoute: (context) => Maps(),
+              MyRoutes.BodyRoute: (context) => Body(),
+              MyRoutes.MapsRoute: (context) => Maps(),
+              MyRoutes.MyAccountRoute: (context) => MyAccount(),
+              MyRoutes.NotificationtRoute: (context) => NotificationPage(),
+              MyRoutes.SettingsRoute: (context) => SettingsPage(),
+            },
+          ),
+          Magic.instance.relayer,
+        ],
+      ),
     );
   }
 }
-
-BottomBar() {}
