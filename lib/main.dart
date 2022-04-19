@@ -55,7 +55,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/pages/Maps.dart';
 import 'package:myapp/pages/SenderPage.dart';
 import 'package:myapp/pages/buttom_bar.dart';
-import 'package:myapp/pages/Maps.dart';
+
 import 'package:myapp/pages/home_page.dart';
 import 'package:myapp/pages/myaccount.dart';
 import 'package:myapp/pages/notification_page.dart';
@@ -117,7 +117,7 @@ class MyApp extends StatelessWidget {
               MyRoutes.SenderRoute: (context) => SenderPage(),
               MyRoutes.MapsRoute: (context) => Maps(),
               MyRoutes.BodyRoute: (context) => Body(),
-              MyRoutes.MapsRoute: (context) => Maps(),
+              // MyRoutes.MapsRoute: (context) => Maps(),
               MyRoutes.MyAccountRoute: (context) => MyAccount(),
               MyRoutes.NotificationtRoute: (context) => NotificationPage(),
               MyRoutes.SettingsRoute: (context) => SettingsPage(),

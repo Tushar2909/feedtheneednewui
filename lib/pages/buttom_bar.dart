@@ -58,7 +58,8 @@
 //       );
 // }
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/Donate_page.dart';
+// import 'package:myapp/pages/Donate_page.dart';
+import 'package:myapp/pages/SenderPage.dart';
 import 'package:myapp/pages/home_page.dart';
 
 import 'package:myapp/pages/notification_page.dart';
@@ -74,7 +75,7 @@ class _ButtomBarState extends State<ButtomBar> {
   int currentIndex = 0;
   final Screens = [
     HomePage(),
-    DonatePage(),
+    SenderPage(),
     NotificationPage(),
     Body(),
   ];
@@ -83,7 +84,7 @@ class _ButtomBarState extends State<ButtomBar> {
         body: Screens[currentIndex],
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.deepPurple,
+          backgroundColor: Colors.deepPurpleAccent,
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.white70,
           //showSelectedLabels: false,

@@ -8,17 +8,46 @@ class SenderPage extends StatefulWidget {
 }
 
 class _SenderPage extends State<SenderPage> {
-  int counter = 0;
+  //  final bool value = false;
+  // int val = -1;
   late String email;
   final ButtonStyle style =
       ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Color.fromARGB(255, 255, 255, 255),
+         color: Colors.white,
         child: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              // ListTile(
+              //   title: const Text("Male"),
+              //   leading: Radio(
+              //     value: 1,
+              //     groupValue: val,
+              //     onChanged: (value) {
+              //       setState(() {
+              //         val =int(value) ;
+              //       });
+              //     },
+              //     activeColor: Colors.green,
+              //   ),
+              // ),
+              // ListTile(
+              //   title: const Text("Female"),
+              //   leading: Radio(
+              //     value: 2,
+              //     groupValue: val,
+              //     onChanged: (value) {
+              //       setState(() {
+              //         val = value;
+              //       });
+              //     },
+              //     activeColor: Colors.green,
+              //   ),
+              // ),
+           
               Padding(
                 padding: const EdgeInsets.only(top: 50),
                 child: Column(
@@ -26,7 +55,7 @@ class _SenderPage extends State<SenderPage> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
                       child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           icon: Icon(Icons.local_phone),
                           hintText: "Enter Phone Number",
                           labelText: "Phone Number",
@@ -35,7 +64,7 @@ class _SenderPage extends State<SenderPage> {
                         validator: (value) {
                           if (value!.isEmpty) {
                             return ("Phone number cannot be empty!");
-                          } else if (value.length < 10) {
+                          } else if (value.length == 10) {
                             return ("Number length should be at east 10!");
                           }
 
@@ -97,8 +126,8 @@ class _SenderPage extends State<SenderPage> {
                   keyboardType: TextInputType.multiline,
                   decoration: InputDecoration(
                     icon: Icon(Icons.delivery_dining_sharp),
-                    hintText: "Enter Food Pickup location",
-                    labelText: "Enter location",
+                    hintText: "Enter Pickup location",
+                    labelText: "Enter Address",
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -108,15 +137,29 @@ class _SenderPage extends State<SenderPage> {
                   },
                 ),
               ),
-              ElevatedButton(
-                 child: const Text('Submit'),
-                 style: ElevatedButton.styleFrom(
-                primary: Colors.deepPurple,
-                ),
-                onPressed: () {
+             ElevatedButton(
+  style: ElevatedButton.styleFrom(
+    primary: Colors.deepPurpleAccent, // background
+    onPrimary: Colors.white, // foreground
+  ),
+                
+
+              onPressed: () {
                   Navigator.pushNamed(context, MyRoutes.MapsRoute);
                 },
+                child: const Text(
+                  "Submit",
+                  style: TextStyle(
+                    color: Colors.white,
+                    
+                    
+                    fontSize: 25,
+                    fontStyle: FontStyle.normal,
+                    // fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
+  
             ],
           ),
         ));
