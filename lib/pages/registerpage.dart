@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/login_page.dart';
+import 'package:myapp/utils/httpclient.dart';
 import '../utils/routes.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -10,9 +11,11 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   String name = "";
+  String email = "";
+  String mobile = "";
+
   bool changeButton = false;
   bool _isObscure = true;
-  late String email;
   //TextController to read text entered in text field
   TextEditingController password = TextEditingController();
   TextEditingController confirmpassword = TextEditingController();
@@ -99,18 +102,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     //       icon: Icon(Icons.lock),
                     //       hintText: "Enter Email",
                     //       labelText: "Email",
-                          // suffixIcon: IconButton(
-                          //   icon: Icon(
-                          //     _isObscure
-                          //         ? Icons.visibility
-                          //         : Icons.visibility_off,
-                          //   ),
-                          //   onPressed: () {
-                          //     setState(() {
-                          //       _isObscure = !_isObscure;
-                          //     });
-                          //   },
-                          // ),
+                    // suffixIcon: IconButton(
+                    //   icon: Icon(
+                    //     _isObscure
+                    //         ? Icons.visibility
+                    //         : Icons.visibility_off,
+                    //   ),
+                    //   onPressed: () {
+                    //     setState(() {
+                    //       _isObscure = !_isObscure;
+                    //     });
+                    //   },
+                    // ),
                     //     ),
                     //     validator: (value) {
                     //       if (value!.isEmpty) {
@@ -160,7 +163,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     //     },
                     //   ),
                     // ),
-                    
+
                     Padding(
                       padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
                       child: TextFormField(
@@ -179,6 +182,10 @@ class _RegisterPageState extends State<RegisterPage> {
                             return 'Please enter valid Email';
                           }
                           return null;
+                        },
+                        onChanged: (value) {
+                          email = value;
+                          setState(() {});
                         },
                         onSaved: (value) {
                           email = value!;
@@ -204,6 +211,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
                           return null;
                         },
+                        onChanged: (value) {
+                          mobile = value;
+                          setState(() {});
+                        },
                       ),
                     ),
                     SizedBox(
@@ -214,7 +225,18 @@ class _RegisterPageState extends State<RegisterPage> {
                       borderRadius:
                           BorderRadius.circular(changeButton ? 50 : 8),
                       child: InkWell(
-                        onTap: () => moveToHome(context),
+                        onTap: () async {
+                          var response = await client.post(
+                            '/users',
+                            data: {
+                              "username": name,
+                              "email": email,
+                              "number": mobile,
+                            },
+                          );
+                          print(response.data);
+                          moveToHome(context);
+                        },
                         child: AnimatedContainer(
                           duration: Duration(milliseconds: 180),
                           width: changeButton ? 50 : 150,

@@ -109,11 +109,13 @@ class _SenderPage extends State<SenderPage> {
                 ),
               ),
               ElevatedButton(
-                style: style,
+                 child: const Text('Submit'),
+                 style: ElevatedButton.styleFrom(
+                primary: Colors.deepPurple,
+                ),
                 onPressed: () {
                   Navigator.pushNamed(context, MyRoutes.MapsRoute);
                 },
-                child: const Text('Submit'),
               ),
             ],
           ),
