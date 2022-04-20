@@ -66,7 +66,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/pages/profile/components/body.dart';
 import 'package:myapp/pages/profile/profile_page.dart';
 import 'package:myapp/pages/registerpage.dart';
-import 'package:myapp/pages/FogotPass.dart';
+
 import 'package:myapp/pages/settings.dart';
 import 'package:myapp/utils/routes.dart';
 
@@ -104,13 +104,13 @@ class MyApp extends StatelessWidget {
             //brightness:Brightness.dark,
             // )
             routes: {
+              //"/": (context) => ButtomBar(),
               "/": (context) => LoginPage(),
-              //"/": (context) => LoginPage(),
               //"/": (context) => RegisterPage(),
               //"/": (context) => LoginPage(),
               MyRoutes.loginRoute: (context) => LoginPage(),
               MyRoutes.RegisterRoute: (context) => RegisterPage(),
-              MyRoutes.ForgotRoute: (context) => FogotPass(),
+             
               //MyRoutes.ProfileRoute: (context) => ProfileScreen(),
               MyRoutes.HomeRoute: (context) => HomePage(),
               MyRoutes.ButtomBarRoute: (context) => ButtomBar(),

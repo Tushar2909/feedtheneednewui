@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
 
 import '../utils/routes.dart';
 
@@ -10,17 +12,33 @@ class SenderPage extends StatefulWidget {
 class _SenderPage extends State<SenderPage> {
   //  final bool value = false;
   // int val = -1;
+    bool valuefirst = false;  
+  
   late String email;
   final ButtonStyle style =
       ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
   @override
   Widget build(BuildContext context) {
     return Material(
-         color: Colors.white,
+        color: Colors.white,
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 50),),
+            Text(
+                  "Donate Food details",
+                  style: TextStyle(
+                    color: Colors.deepPurpleAccent,
+
+                    fontSize: 25,
+                    
+                    fontStyle: FontStyle.normal,
+                    
+                    ),
+            ),
+
               // ListTile(
               //   title: const Text("Male"),
               //   leading: Radio(
@@ -47,9 +65,9 @@ class _SenderPage extends State<SenderPage> {
               //     activeColor: Colors.green,
               //   ),
               // ),
-           
+
               Padding(
-                padding: const EdgeInsets.only(top: 50),
+                padding: const EdgeInsets.only(top:20),
                 child: Column(
                   children: [
                     Padding(
@@ -76,7 +94,7 @@ class _SenderPage extends State<SenderPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
+                padding: const EdgeInsets.fromLTRB(10, 5, 10, 15),
                 child: TextFormField(
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
@@ -100,7 +118,7 @@ class _SenderPage extends State<SenderPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
+                padding: const EdgeInsets.fromLTRB(10, 5, 10, 15),
                 child: TextFormField(
                   minLines: 1,
                   maxLines: 5,
@@ -119,7 +137,7 @@ class _SenderPage extends State<SenderPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
+                padding: const EdgeInsets.fromLTRB(10, 5, 10, 15),
                 child: TextFormField(
                   minLines: 1,
                   maxLines: 5,
@@ -137,30 +155,48 @@ class _SenderPage extends State<SenderPage> {
                   },
                 ),
               ),
-             ElevatedButton(
-  style: ElevatedButton.styleFrom(
-    primary: Colors.deepPurpleAccent, // background
-    onPrimary: Colors.white, // foreground
-  ),
-                
-
-              onPressed: () {
-                  Navigator.pushNamed(context, MyRoutes.MapsRoute);
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 5, 10, 15),
+                child: TextFormField(
+                  minLines: 1,
+                  maxLines: 5,
+                  keyboardType: TextInputType.multiline,
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.delivery_dining_sharp),
+                    hintText: "Enter Pickup location",
+                    labelText: "Enter Address",
+                  ),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return ("This field cannot be empty cannot be empty!");
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.deepPurpleAccent, // background
+                  onPrimary: Colors.white, // foreground
+                ),
+                onPressed: () {
+                  print("Submitted");
+                  //Navigator.pushNamed(context, MyRoutes.MapsRoute);
                 },
                 child: const Text(
                   "Submit",
                   style: TextStyle(
                     color: Colors.white,
-                    
-                    
+
                     fontSize: 25,
                     fontStyle: FontStyle.normal,
                     // fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-  
             ],
+  
+            
           ),
         ));
   }
