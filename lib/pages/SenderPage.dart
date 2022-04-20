@@ -1,5 +1,8 @@
+
+
 import 'package:flutter/material.dart';
 
+import '../utils/httpclient.dart';
 import '../utils/routes.dart';
 
 class SenderPage extends StatefulWidget {
@@ -10,13 +13,18 @@ class SenderPage extends StatefulWidget {
 class _SenderPage extends State<SenderPage> {
   //  final bool value = false;
   // int val = -1;
-  late String email;
+  // String name = "";
+  String email = "";
+  String mobileno = "";
+  String foodDetail = "";
+  String address = "";
+  String userlocation = "";
   final ButtonStyle style =
       ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
   @override
   Widget build(BuildContext context) {
     return Material(
-         color: Colors.white,
+        color: Colors.white,
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -47,7 +55,7 @@ class _SenderPage extends State<SenderPage> {
               //     activeColor: Colors.green,
               //   ),
               // ),
-           
+
               Padding(
                 padding: const EdgeInsets.only(top: 50),
                 child: Column(
@@ -55,22 +63,25 @@ class _SenderPage extends State<SenderPage> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
                       child: TextFormField(
-                        decoration: const InputDecoration(
-                          icon: Icon(Icons.local_phone),
-                          hintText: "Enter Phone Number",
-                          labelText: "Phone Number",
-                        ),
-                        keyboardType: TextInputType.number,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return ("Phone number cannot be empty!");
-                          } else if (value.length == 10) {
-                            return ("Number length should be at east 10!");
-                          }
+                          decoration: const InputDecoration(
+                            icon: Icon(Icons.local_phone),
+                            hintText: "Enter Phone Number",
+                            labelText: "Phone Number",
+                          ),
+                          keyboardType: TextInputType.number,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return ("Phone number cannot be empty!");
+                            } else if (value.length == 10) {
+                              return ("Number length should be at east 10!");
+                            }
 
-                          return null;
-                        },
-                      ),
+                            return null;
+                          },
+                          onChanged: (value) {
+                            mobileno = value;
+                            setState(() {});
+                          },),
                     ),
                   ],
                 ),
@@ -94,6 +105,10 @@ class _SenderPage extends State<SenderPage> {
                     }
                     return null;
                   },
+                  onChanged: (value) {
+                    email = value;
+                    setState(() {});
+                  },
                   onSaved: (value) {
                     email = value!;
                   },
@@ -116,6 +131,10 @@ class _SenderPage extends State<SenderPage> {
                     }
                     return null;
                   },
+                  onChanged: (value) {
+                    foodDetail = value;
+                    setState(() {});
+                  },
                 ),
               ),
               Padding(
@@ -135,31 +154,94 @@ class _SenderPage extends State<SenderPage> {
                     }
                     return null;
                   },
+                  onChanged: (value) {
+                    address = value;
+                    setState(() {});
+                  },
                 ),
               ),
-             ElevatedButton(
-  style: ElevatedButton.styleFrom(
-    primary: Colors.deepPurpleAccent, // background
-    onPrimary: Colors.white, // foreground
-  ),
-                
-
-              onPressed: () {
-                  Navigator.pushNamed(context, MyRoutes.MapsRoute);
-                },
-                child: const Text(
-                  "Submit",
-                  style: TextStyle(
-                    color: Colors.white,
-                    
-                    
-                    fontSize: 25,
-                    fontStyle: FontStyle.normal,
-                    // fontWeight: FontWeight.bold,
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
+                child: TextFormField(
+                  minLines: 1,
+                  maxLines: 5,
+                  keyboardType: TextInputType.multiline,
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.delivery_dining_sharp),
+                    labelText: "Enter location",
                   ),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return ("This field cannot be empty cannot be empty!");
+                    }
+                    return null;
+                  },
+                  onChanged: (value) {
+                    userlocation = value;
+                    setState(() {});
+                  },
                 ),
               ),
-  
+              // Material(
+              //   color: Colors.deepPurpleAccent,
+              //   child: InkWell(
+              //       onTap: () async {
+              //         var response = await client.post(
+              //           '/donors',
+              //           data: {
+                          // "email": email,
+                          // "mobileno": mobileno,
+                          // "foodDetails": foodDetail,
+                          // "address": address,
+                          // "userlocation": userlocation
+              //           },
+              //         );
+              //         print(response.data);
+              //         // moveToHome(context);
+              //       },
+              //       child: Text(
+              //         "Submit",
+              //                         style: TextStyle(
+              //                           color: Colors.white,
+
+              //                           fontSize: 25,
+              //                           fontStyle: FontStyle.normal,
+              //                           // fontWeight: FontWeight.bold,
+              //                         ),
+              //       )),
+              // ),
+              ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.deepPurpleAccent, // background
+                onPrimary: Colors.white, // foreground
+              ),
+
+                          onPressed: () async {
+                            var response = await client.post(
+                            '/donors',
+                            data: {
+                              "email": email,
+                              "mobileno": mobileno,
+                              "foodDetails": foodDetail,
+                              "address": address,
+                              "userlocation": userlocation
+                            },
+                          );
+                          print(response.data);
+                              Navigator.pushNamed(context, MyRoutes.MapsRoute);
+                            },
+                            child: const Text(
+                              "Submit",
+                              style: TextStyle(
+                                color: Colors.white,
+
+                                fontSize: 25,
+                                fontStyle: FontStyle.normal,
+                                // fontWeight: FontWeight.bold,
+                              ),
+                            ),
+
+                          ),
             ],
           ),
         ));

@@ -208,7 +208,6 @@ class _RegisterPageState extends State<RegisterPage> {
                           } else if (value.length < 10) {
                             return ("Number length should be at east 10!");
                           }
-
                           return null;
                         },
                         onChanged: (value) {
