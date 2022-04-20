@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-
+import '../utils/httpclient.dart';
 import '../utils/routes.dart';
 
 class SenderPage extends StatefulWidget {
@@ -12,9 +12,12 @@ class SenderPage extends StatefulWidget {
 class _SenderPage extends State<SenderPage> {
   //  final bool value = false;
   // int val = -1;
-    bool valuefirst = false;  
-  
-  late String email;
+  // String name = "";
+  String email = "";
+  String mobileno = "";
+  String foodDetail = "";
+  String address = "";
+  String userlocation = "";
   final ButtonStyle style =
       ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
   @override
@@ -26,18 +29,16 @@ class _SenderPage extends State<SenderPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 50),),
-            Text(
-                  "Donate Food details",
-                  style: TextStyle(
-                    color: Colors.deepPurpleAccent,
-
-                    fontSize: 25,
-                    
-                    fontStyle: FontStyle.normal,
-                    
-                    ),
-            ),
+                padding: const EdgeInsets.only(top: 50),
+              ),
+              Text(
+                "Donate Food details",
+                style: TextStyle(
+                  color: Colors.deepPurpleAccent,
+                  fontSize: 25,
+                  fontStyle: FontStyle.normal,
+                ),
+              ),
 
               // ListTile(
               //   title: const Text("Male"),
@@ -67,7 +68,7 @@ class _SenderPage extends State<SenderPage> {
               // ),
 
               Padding(
-                padding: const EdgeInsets.only(top:20),
+                padding: const EdgeInsets.only(top: 20),
                 child: Column(
                   children: [
                     Padding(
@@ -87,6 +88,10 @@ class _SenderPage extends State<SenderPage> {
                           }
 
                           return null;
+                        },
+                        onChanged: (value) {
+                          mobileno = value;
+                          setState(() {});
                         },
                       ),
                     ),
@@ -112,6 +117,10 @@ class _SenderPage extends State<SenderPage> {
                     }
                     return null;
                   },
+                  onChanged: (value) {
+                    email = value;
+                    setState(() {});
+                  },
                   onSaved: (value) {
                     email = value!;
                   },
@@ -134,24 +143,9 @@ class _SenderPage extends State<SenderPage> {
                     }
                     return null;
                   },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(10, 5, 10, 15),
-                child: TextFormField(
-                  minLines: 1,
-                  maxLines: 5,
-                  keyboardType: TextInputType.multiline,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.delivery_dining_sharp),
-                    hintText: "Enter Pickup location",
-                    labelText: "Enter Address",
-                  ),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return ("This field cannot be empty cannot be empty!");
-                    }
-                    return null;
+                  onChanged: (value) {
+                    foodDetail = value;
+                    setState(() {});
                   },
                 ),
               ),
@@ -172,16 +166,80 @@ class _SenderPage extends State<SenderPage> {
                     }
                     return null;
                   },
+                  onChanged: (value) {
+                    address = value;
+                    setState(() {});
+                  },
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
+                child: TextFormField(
+                  minLines: 1,
+                  maxLines: 5,
+                  keyboardType: TextInputType.multiline,
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.delivery_dining_sharp),
+                    labelText: "Enter location",
+                  ),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return ("This field cannot be empty cannot be empty!");
+                    }
+                    return null;
+                  },
+                  onChanged: (value) {
+                    userlocation = value;
+                    setState(() {});
+                  },
+                ),
+              ),
+              // Material(
+              //   color: Colors.deepPurpleAccent,
+              //   child: InkWell(
+              //       onTap: () async {
+              //         var response = await client.post(
+              //           '/donors',
+              //           data: {
+              // "email": email,
+              // "mobileno": mobileno,
+              // "foodDetails": foodDetail,
+              // "address": address,
+              // "userlocation": userlocation
+              //           },
+              //         );
+              //         print(response.data);
+              //         // moveToHome(context);
+              //       },
+              //       child: Text(
+              //         "Submit",
+              //                         style: TextStyle(
+              //                           color: Colors.white,
+
+              //                           fontSize: 25,
+              //                           fontStyle: FontStyle.normal,
+              //                           // fontWeight: FontWeight.bold,
+              //                         ),
+              //       )),
+              // ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: Colors.deepPurpleAccent, // background
                   onPrimary: Colors.white, // foreground
                 ),
-                onPressed: () {
-                  print("Submitted");
-                  //Navigator.pushNamed(context, MyRoutes.MapsRoute);
+                onPressed: () async {
+                  var response = await client.post(
+                    '/donors',
+                    data: {
+                      "email": email,
+                      "mobileno": mobileno,
+                      "foodDetails": foodDetail,
+                      "address": address,
+                      "userlocation": userlocation
+                    },
+                  );
+                  print(response.data);
+                  Navigator.pushNamed(context, MyRoutes.MapsRoute);
                 },
                 child: const Text(
                   "Submit",
@@ -195,8 +253,6 @@ class _SenderPage extends State<SenderPage> {
                 ),
               ),
             ],
-  
-            
           ),
         ));
   }

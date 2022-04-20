@@ -110,7 +110,7 @@ class MyApp extends StatelessWidget {
               //"/": (context) => LoginPage(),
               MyRoutes.loginRoute: (context) => LoginPage(),
               MyRoutes.RegisterRoute: (context) => RegisterPage(),
-             
+
               //MyRoutes.ProfileRoute: (context) => ProfileScreen(),
               MyRoutes.HomeRoute: (context) => HomePage(),
               MyRoutes.ButtomBarRoute: (context) => ButtomBar(),

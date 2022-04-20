@@ -13,10 +13,9 @@ class _RegisterPageState extends State<RegisterPage> {
   String name = "";
   String email = "";
   String mobile = "";
-  // String name = "";
+
   bool changeButton = false;
   bool _isObscure = true;
-  // late String email;
   //TextController to read text entered in text field
   TextEditingController password = TextEditingController();
   TextEditingController confirmpassword = TextEditingController();
@@ -193,25 +192,25 @@ class _RegisterPageState extends State<RegisterPage> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
                       child: TextFormField(
-                          decoration: InputDecoration(
-                            icon: Icon(Icons.local_phone),
-                            hintText: "Enter Phone Number",
-                            labelText: "Phone Number",
-                          ),
-                          keyboardType: TextInputType.number,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return ("Phone number cannot be empty!");
-                            } else if (value.length < 10) {
-                              return ("Number length should be at east 10!");
-                            }
-
-                            return null;
-                          },
-                          onChanged: (value) {
-                            mobile = value;
-                            setState(() {});
-                          }),
+                        decoration: InputDecoration(
+                          icon: Icon(Icons.local_phone),
+                          hintText: "Enter Phone Number",
+                          labelText: "Phone Number",
+                        ),
+                        keyboardType: TextInputType.number,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return ("Phone number cannot be empty!");
+                          } else if (value.length < 10) {
+                            return ("Number length should be at east 10!");
+                          }
+                          return null;
+                        },
+                        onChanged: (value) {
+                          mobile = value;
+                          setState(() {});
+                        },
+                      ),
                     ),
                     const SizedBox(
                       height: 30,
@@ -230,7 +229,6 @@ class _RegisterPageState extends State<RegisterPage> {
                               "number": mobile,
                             },
                           );
-                          print(email);
                           print(response.data);
                           moveToHome(context);
                         },

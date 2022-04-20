@@ -4,6 +4,8 @@ import 'package:magic_sdk/magic_sdk.dart';
 import 'package:myapp/pages/home_page.dart';
 import 'package:myapp/utils/routes.dart';
 
+import '../utils/httpclient.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -19,6 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   //     TextEditingController(text: '+91');
 
   String name = "";
+  String mobile = "";
   bool changeButton = false;
 
   moveToHome(BuildContext context) async {
@@ -126,94 +129,75 @@ class _LoginPageState extends State<LoginPage> {
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           icon: Icon(Icons.phone),
-                          
                           hintText: "Enter Phone number",
                           labelText: "Number",
                         ),
-                        // validator: (value) {
-                        //   if (value!.isEmpty) {
-                        //     return ("Please Enter Your number");
-                        //   } else if (value.length < 10 || value.length > 10) {
-                        //     return ("Phone Number Length Should be 10 Digit");
-                        //   }
-                        //   return null;
-                        // },
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return ("Please Enter Your number");
+                          }
+                          return null;
+                        },
                       ),
                     ),
                     SizedBox(
                       height: 30,
                     ),
-                    // TextButton(
-                    //   style: ButtonStyle(
-                    //     foregroundColor:
-                    //         MaterialStateProperty.all<Color>(Colors.blue),
-                    //   ),
-                    //   onPressed: () async {
-                    //     var token = await magic.auth
-                    //         .loginWithSMS(phoneNumber: textController.text);
-                    //     debugPrint('token, $token');
-
-                    //     if (token.isNotEmpty) {
-                    //       // Navigate to your home page
-                    //       //  onPressed: () {
-                    //       //   Navigator.pushNamed(context, MyRoutes.HomeRoute);
-
-                    //       // };
-                    //       moveToHome(context);
-                    //     }
-                    //   },
-                    //   child: const Text('Login With Phone Number'),
-                    // ),
 
                     Material(
                       color: Colors.deepPurpleAccent,
                       borderRadius:
                           BorderRadius.circular(changeButton ? 50 : 8),
-                      child: InkWell(
-                        onTap: () async {
-                          var token = await magic.auth
-                              .loginWithSMS(phoneNumber: textController.text);
-                          debugPrint('token, $token');
-
-                          if (token.isNotEmpty) {
-                            // Navigate to your home page
-                            //  onPressed: () {
-                            //   Navigator.pushNamed(context, MyRoutes.HomeRoute);
-
-                            // };
-                            moveToHome(context);
-                          }
-                        },
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 180),
-                          width: changeButton ? 50 : 150,
-                          height: 50,
-                          alignment: Alignment.center,
-                          child: changeButton
-                              ?const Icon(
-                                  Icons.done,
-                                  color: Colors.white,
-                                )
-                              : InkWell(
-                                onTap: () {
-                                  
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 180),
+                        width: changeButton ? 50 : 150,
+                        height: 50,
+                        alignment: Alignment.center,
+                        child: changeButton
+                            ? const Icon(
+                                Icons.done,
+                                color: Colors.white,
+                              )
+                            : InkWell(
+                                onTap: () async {
+                                  // print("This is executed");
+                                  var response = await client.get(
+                                    '/users/9870298012',
+                                    // data: {
+                                    //   "number": 9372585045,
+                                    // },
+                                  );
+                                  print(response.data);
+                                  if (response.data != null) {
+                                    print("1st  if");
+                                    var token = await magic.auth.loginWithSMS(
+                                        phoneNumber: textController.text);
+                                    debugPrint('token, $token');
+                                    if (token.isNotEmpty) {
+                                      moveToHome(context);
+                                    }
+                                    // else{}
+                                  } else {
+                                    print("else called");
+                                    Navigator.pushNamed(
+                                        context, MyRoutes.RegisterRoute);
+                                  }
                                 },
                                 child: const Text(
-                                    "LOGIN",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
+                                  "LOGIN",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
                                   ),
+                                ),
                               ),
 
-                          // decoration: BoxDecoration(
-                          //  color: Colors.deepPurpleAccent,
-                          // shape: changeButton?BoxShape.circle:BoxShape.rectangle,
+                        // decoration: BoxDecoration(
+                        //  color: Colors.deepPurpleAccent,
+                        // shape: changeButton?BoxShape.circle:BoxShape.rectangle,
 
-                          // ),
-                        ),
+                        // ),
                       ),
                     ),
                     const SizedBox(
