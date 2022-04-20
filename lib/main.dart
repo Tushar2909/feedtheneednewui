@@ -104,10 +104,9 @@ class MyApp extends StatelessWidget {
             //brightness:Brightness.dark,
             // )
             routes: {
-              //"/": (context) => ButtomBar(),
+              // "/": (context) => ButtomBar(),
               "/": (context) => LoginPage(),
               //"/": (context) => RegisterPage(),
-              //"/": (context) => LoginPage(),
               MyRoutes.loginRoute: (context) => LoginPage(),
               MyRoutes.RegisterRoute: (context) => RegisterPage(),
 

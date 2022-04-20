@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:magic_sdk/magic_sdk.dart';
@@ -167,9 +169,10 @@ class _LoginPageState extends State<LoginPage> {
                                     //   "number": 9372585045,
                                     // },
                                   );
-                                  print(response.data);
+                                  // print((jsonDecode(response.data)["number"])
+                                  //     .toString());
                                   if (response.data != null) {
-                                    print("1st  if");
+                                    // print("1st  if");
                                     var token = await magic.auth.loginWithSMS(
                                         phoneNumber: textController.text);
                                     debugPrint('token, $token');
@@ -178,7 +181,7 @@ class _LoginPageState extends State<LoginPage> {
                                     }
                                     // else{}
                                   } else {
-                                    print("else called");
+                                    // print("else called");
                                     Navigator.pushNamed(
                                         context, MyRoutes.RegisterRoute);
                                   }

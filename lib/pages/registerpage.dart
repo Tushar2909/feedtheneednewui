@@ -15,10 +15,9 @@ class _RegisterPageState extends State<RegisterPage> {
   String mobile = "";
 
   bool changeButton = false;
-  bool _isObscure = true;
   //TextController to read text entered in text field
-  TextEditingController password = TextEditingController();
-  TextEditingController confirmpassword = TextEditingController();
+  // TextEditingController password = TextEditingController();
+  // TextEditingController confirmpassword = TextEditingController();
   moveToHome(BuildContext context) async {
     if (_formkey.currentState!.validate()) {
       setState(() {
