@@ -220,15 +220,21 @@ class _RegisterPageState extends State<RegisterPage> {
                           BorderRadius.circular(changeButton ? 50 : 8),
                       child: InkWell(
                         onTap: () async {
-                          var response = await client.post(
-                            '/users',
-                            data: {
-                              "username": name,
-                              "email": email,
-                              "number": mobile,
-                            },
-                          );
-                          print(response.data);
+                          var validResponse = await client
+                              .post('/isValid', data: {'mobileno': mobile});
+                          if (validResponse.data) {
+                            // Show already registered dialog
+                          } else {
+                            var registerResponse = await client.post(
+                              '/users',
+                              data: {
+                                "username": name,
+                                "email": email,
+                                "number": mobile,
+                              },
+                            );
+                            print(registerResponse.data);
+                          }
                           moveToHome(context);
                         },
                         child: AnimatedContainer(

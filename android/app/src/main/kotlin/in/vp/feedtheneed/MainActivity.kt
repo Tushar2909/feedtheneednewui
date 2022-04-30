@@ -1,4 +1,4 @@
-package in.vp.feedtheneed
+package `in`.vp.feedtheneed
 
 import io.flutter.embedding.android.FlutterActivity
 

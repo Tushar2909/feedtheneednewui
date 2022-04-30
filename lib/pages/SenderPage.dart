@@ -26,6 +26,8 @@ class _SenderPage extends State<SenderPage> {
 
     setState(() {
       _locationMessage = "${position.latitude}, ${position.longitude}";
+      lat = position.latitude;
+      lng = position.longitude;
     });
   }
 
@@ -289,7 +291,7 @@ class _SenderPage extends State<SenderPage> {
                   );
                   print(response.data);
                   // moveToHome(context);
-                  Navigator.pushNamed(context, MyRoutes.ButtomBarRoute);
+                  Navigator.pushNamed(context, MyRoutes.MapsRoute);
                 },
                 child: const Text(
                   "Submit",

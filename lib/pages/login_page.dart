@@ -140,6 +140,11 @@ class _LoginPageState extends State<LoginPage> {
                           }
                           return null;
                         },
+                        onChanged: (value) {
+                          setState(() {
+                            mobile = value;
+                          });
+                        },
                       ),
                     ),
                     SizedBox(
@@ -162,26 +167,27 @@ class _LoginPageState extends State<LoginPage> {
                               )
                             : InkWell(
                                 onTap: () async {
-                                  // print("This is executed");
-                                  var response = await client.get(
-                                    '/users/9870298012',
-                                    // data: {
-                                    //   "number": 9372585045,
-                                    // },
+                                  print("HIII");
+                                  var response = await client.post(
+                                    '/isValid',
+                                    data: {
+                                      'mobileno': mobile.substring(3),
+                                    },
                                   );
-                                  // print((jsonDecode(response.data)["number"])
-                                  //     .toString());
-                                  if (response.data != null) {
-                                    // print("1st  if");
+                                  print(mobile);
+                                  print(response.data);
+                                  if (response.data) {
                                     var token = await magic.auth.loginWithSMS(
                                         phoneNumber: textController.text);
                                     debugPrint('token, $token');
+                                    // debugPrint('token, $token');
+
                                     if (token.isNotEmpty) {
                                       moveToHome(context);
+                                      // Navigator.pushNamed(
+                                      //   context, MyRoutes.ButtomBarRoute);
                                     }
-                                    // else{}
                                   } else {
-                                    // print("else called");
                                     Navigator.pushNamed(
                                         context, MyRoutes.RegisterRoute);
                                   }
