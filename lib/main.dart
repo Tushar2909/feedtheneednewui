@@ -105,7 +105,7 @@ class MyApp extends StatelessWidget {
             // )
             routes: {
               //  "/": (context) => ButtomBar(),
-              "/": (context) => LoginPage(),
+              "/": (context) => SenderPage(),
               //"/": (context) => RegisterPage(),
               MyRoutes.loginRoute: (context) => LoginPage(),
               MyRoutes.RegisterRoute: (context) => RegisterPage(),

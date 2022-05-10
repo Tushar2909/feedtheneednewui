@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:myapp/utils/routes.dart';
 
 class CurrentLocationScreen extends StatefulWidget {
   const CurrentLocationScreen({Key? key}) : super(key: key);
@@ -49,6 +50,8 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
               position: LatLng(position.latitude, position.longitude)));
 
           setState(() {});
+
+          // Navigator.pushNamed(context, MyRoutes.ButtomBarRoute);
         },
         label: const Text("Current Location"),
         icon: const Icon(Icons.location_history),

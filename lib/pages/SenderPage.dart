@@ -213,30 +213,24 @@ class _SenderPage extends State<SenderPage> {
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
-                child: InkWell(
-                  onTap: () {
-                    _getCurrentLocation();
-                    // this.position = CurrentLocationScreen()
-                  },
-                  child: TextFormField(
-                    minLines: 1,
-                    maxLines: 5,
-                    keyboardType: TextInputType.multiline,
-                    decoration: InputDecoration(
-                      icon: Icon(Icons.delivery_dining_sharp),
-                      labelText: "Enter location",
-                    ),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return ("This field cannot be empty cannot be empty!");
-                      }
-                      return null;
-                    },
-                    onChanged: (value) {
-                      userlocation = value;
-                      setState(() {});
-                    },
+                child: TextFormField(
+                  minLines: 1,
+                  maxLines: 5,
+                  keyboardType: TextInputType.multiline,
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.delivery_dining_sharp),
+                    labelText: "Enter location",
                   ),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return ("This field cannot be empty cannot be empty!");
+                    }
+                    return null;
+                  },
+                  onChanged: (value) {
+                    userlocation = value;
+                    setState(() {});
+                  },
                 ),
               ),
               // IconButton(
@@ -291,7 +285,7 @@ class _SenderPage extends State<SenderPage> {
                   );
                   print(response.data);
                   // moveToHome(context);
-                  Navigator.pushNamed(context, MyRoutes.MapsRoute);
+                  Navigator.pushNamed(context, MyRoutes.ButtomBarRoute);
                 },
                 child: const Text(
                   "Submit",
