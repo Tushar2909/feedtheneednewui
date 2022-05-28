@@ -14,11 +14,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/pages/profile/components/body.dart';
 import 'package:myapp/pages/profile/profile_page.dart';
 import 'package:myapp/pages/registerpage.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:myapp/pages/settings.dart';
 import 'package:myapp/utils/routes.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
   Magic.instance = Magic("pk_live_F3A69882D37F8E12");
 }
