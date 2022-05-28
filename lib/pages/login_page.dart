@@ -19,8 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   Magic magic = Magic.instance;
 
   final textController = TextEditingController(text: '+91');
-  // final TextEditingController _otpController =
-  //     TextEditingController(text: '+91');
+  
 
   String name = "";
   String mobile = "";
@@ -89,40 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                             setState(() {});
                           }),
                     ),
-
-                    // Padding(
-                    //   padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
-                    //   child: Center(
-                    //     child: TextFormField(
-                    //       obscureText: _isObscure,
-                    //       decoration: InputDecoration(
-                    //         icon: Icon(Icons.lock),
-                    //         hintText: "Enter Password",
-                    //         labelText: "Password",
-                    //         suffixIcon: IconButton(
-                    //           icon: Icon(
-                    //             _isObscure
-                    //                 ? Icons.visibility
-                    //                 : Icons.visibility_off,
-                    //           ),
-                    //           onPressed: () {
-                    //             setState(() {
-                    //               _isObscure = !_isObscure;
-                    //             });
-                    //           },
-                    //         ),
-                    //       ),
-                    //       validator: (value) {
-                    //         if (value!.isEmpty) {
-                    //           return ("Please Enter Password");
-                    //         } else if (value.length < 8) {
-                    //           return ("Number length should be at east 10!");
-                    //         }
-                    //         return null;
-                    //       },
-                    //     ),
-                    //   ),
-                    // ),
+ 
 
                     Padding(
                       padding: const EdgeInsets.fromLTRB(15, 5, 10, 15),
@@ -202,30 +168,14 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
 
-                        // decoration: BoxDecoration(
-                        //  color: Colors.deepPurpleAccent,
-                        // shape: changeButton?BoxShape.circle:BoxShape.rectangle,
-
-                        // ),
+                        
                       ),
                     ),
                     const SizedBox(
                       height: 5,
                     ),
 
-                    // ElevatedButton(
-                    //     child: Text(
-                    //       "Forget Password?",
-                    //     ),
-                    //     style: TextButton.styleFrom(
-                    //       minimumSize: Size(
-                    //         150,
-                    //         50,
-                    //       ),
-                    //     ),
-                    //     onPressed: () {
-                    //       Navigator.pushNamed(context, MyRoutes.ForgotRoute);
-                    //     }),
+                    
 
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -239,8 +189,7 @@ class _LoginPageState extends State<LoginPage> {
                               fontStyle: FontStyle.normal,
                               fontSize: 18,
                             ),
-                            // textAlign: TextAlign.left,
-                          ),
+                                                   ),
                           InkWell(
                             onTap: () {
                               Navigator.pushNamed(
@@ -252,8 +201,7 @@ class _LoginPageState extends State<LoginPage> {
                                   fontWeight: FontWeight.w600,
                                   fontSize: 20,
                                   color: Colors.deepPurpleAccent),
-                              //  textAlign: TextAlign.left,
-                            ),
+                                                          ),
                           )
                         ],
                       ),

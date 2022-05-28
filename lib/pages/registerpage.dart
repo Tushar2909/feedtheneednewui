@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/login_page.dart';
@@ -225,12 +226,16 @@ class _RegisterPageState extends State<RegisterPage> {
                           if (validResponse.data) {
                             // Show already registered dialog
                           } else {
+                            final fcmToken =
+                                await FirebaseMessaging.instance.getToken();
+                            print("fcm: - ${fcmToken}");
                             var registerResponse = await client.post(
                               '/users',
                               data: {
                                 "username": name,
                                 "email": email,
                                 "number": mobile,
+                                "Token": fcmToken,
                               },
                             );
                             print(registerResponse.data);
