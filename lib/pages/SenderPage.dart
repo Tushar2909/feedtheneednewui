@@ -16,7 +16,7 @@ class _SenderPage extends State<SenderPage> {
   double lat = 0.00;
   double lng = 0.00;
 
-  void _getCurrentLocation() async {
+  Future<void> _getCurrentLocation() async {
     print("Called");
     final position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
@@ -270,9 +270,9 @@ class _SenderPage extends State<SenderPage> {
                   onPrimary: Colors.white, // foreground
                 ),
                 onPressed: () async {
-                  _getCurrentLocation();
+                  await _getCurrentLocation();
                   var response = await client.post(
-                    '/donors',
+                    '/donation',
                     data: {
                       "email": email,
                       "mobileno": mobileno,

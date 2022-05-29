@@ -1,6 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:myapp/pages/login_page.dart';
 import 'package:myapp/utils/httpclient.dart';
 import '../utils/routes.dart';
@@ -14,6 +15,24 @@ class _RegisterPageState extends State<RegisterPage> {
   String name = "";
   String email = "";
   String mobile = "";
+  String _locationMessage = "";
+  double lat = 0.00;
+  double lng = 0.00;
+
+  Future<void> _getCurrentLocation() async {
+    print("Called");
+    final position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    print(position);
+    lat = position.latitude;
+    lng = position.longitude;
+
+    setState(() {
+      _locationMessage = "${position.latitude}, ${position.longitude}";
+      lat = position.latitude;
+      lng = position.longitude;
+    });
+  }
 
   bool changeButton = false;
   //TextController to read text entered in text field
@@ -226,6 +245,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           if (validResponse.data) {
                             // Show already registered dialog
                           } else {
+                            await _getCurrentLocation();
                             final fcmToken =
                                 await FirebaseMessaging.instance.getToken();
                             print("fcm: - ${fcmToken}");
@@ -235,6 +255,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                 "username": name,
                                 "email": email,
                                 "number": mobile,
+                                "latitude": this.lat,
+                                "longitude": this.lng,
                                 "Token": fcmToken,
                               },
                             );
