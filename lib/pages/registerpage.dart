@@ -44,7 +44,7 @@ class _RegisterPageState extends State<RegisterPage> {
         changeButton = true;
       });
       await Future.delayed(const Duration(seconds: 1));
-      await Navigator.pushNamed(context, MyRoutes.ButtomBarRoute);
+      await Navigator.pushNamed(context, MyRoutes.loginRoute);
       setState(() {
         changeButton = false;
       });

@@ -29,7 +29,9 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "Settings",
             icon: "assets/icons/Settings.svg",
-            press: () {Navigator.pushNamed(context, MyRoutes.SettingsRoute);},
+            press: () {
+              Navigator.pushNamed(context, MyRoutes.SettingsRoute);
+            },
           ),
           ProfileMenu(
             text: "Help Center",
@@ -37,10 +39,11 @@ class Body extends StatelessWidget {
             press: () {},
           ),
           ProfileMenu(
-            text: "Log Out",
-            icon: "assets/icons/Log out.svg",
-            press: () {},
-          ),
+              text: "Log Out",
+              icon: "assets/icons/Log out.svg",
+              press: () {
+                Navigator.pushNamed(context, MyRoutes.RegisterRoute);
+              }),
         ],
       ),
     );

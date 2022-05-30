@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
             title: 'OTP',
             debugShowCheckedModeBanner: false,
             routes: {
-              "/": (context) => LoginPage(),
+              "/": (context) => ButtomBar(),
               MyRoutes.loginRoute: (context) => LoginPage(),
               MyRoutes.RegisterRoute: (context) => RegisterPage(),
               MyRoutes.HomeRoute: (context) => HomePage(),
